@@ -13,10 +13,10 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; thêm dòng nếu 
 
 | STT | Họ và tên | MSSV | Vai | Trưởng nhóm |
 | --: | --------- | ---- | --- | :---------: |
-|   1 |Vũ Đức Minh|2A202603673|     |             |
-|   2 |Lê Xuân Phúc|      |     |             |
-|   3 |Phạm Quỳnh Anh|      |     |             |
-|   4 |Mai Đăng Khương|      |     |             |
+|   1 |Vũ Đức Minh|2A202603673|Sản phẩm và kinh doanh|x|
+|   2 |Lê Xuân Phúc|      |Vận hành và pháp lý|             |
+|   3 |Phạm Quỳnh Anh|      |Sản phẩm và kinh doanh|             |
+|   4 |Mai Đăng Khương|      |Kỹ sư cổng|             |
 |   5 |           |      |     |             |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.

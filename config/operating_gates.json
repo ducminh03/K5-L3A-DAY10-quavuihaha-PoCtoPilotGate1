@@ -1,24 +1,47 @@
 {
   "_huong_dan": "Cổng kinh doanh, vận hành, pháp lý mà trợ lý PHẢI tuân theo. Bàn điền ở vòng 1, chốt bằng python3 -m lab10.checkpoint, rồi được sửa tiếp ở vòng 2. null = chưa đặt cổng này. Giải thích từng dòng: docs/guide.md, mục Cổng trong config (#ban-do).",
   "business": {
-    "daily_refund_cap_vnd": null,
-    "cost_budget_per_ticket_vnd": null,
-    "pilot_scope": {"mode": "all", "warehouses": [], "percent": 100},
-    "roi_min": null
+    "daily_refund_cap_vnd": 1500000,
+    "cost_budget_per_ticket_vnd": 1500,
+    "pilot_scope": {
+      "mode": "all",
+      "warehouses": [],
+      "percent": 100
+    },
+    "roi_min": 0.25
   },
   "operations": {
-    "pic": "",
-    "approver_id": "",
+    "pic": "NV-TUNG",
+    "approver_id": "NV-HANH",
+<<<<<<< HEAD
     "reviewers_on_shift": 1,
-    "review_capacity_per_hour": null,
-    "max_queue_wait_minutes": null,
-    "stop_conditions": [],
-    "alert_channel": "",
+    "review_capacity_per_hour": 6,
+    "max_queue_wait_minutes": 60,
+    "stop_conditions": [
+      "Khi phát sinh >= 1 lỗi ghi oan cho hãng vận chuyển hoặc >= 1 lần lộ dữ liệu cá nhân bên thứ ba thì tắt ngay công tắc file_carrier_fault và notify_carrier trong config/switches.json.",
+      "Khi tổng tiền hoàn sai vượt ngưỡng hoặc hàng chờ có >= 1 ca bị ùn (chờ > 60 phút) mà chưa bổ sung kịp người trực thì tắt công tắc issue_refund trong config/switches.json và chuyển toàn bộ sang hàng chờ CSKH."
+    ],
+    "alert_channel": "#logix-gate1-ops-alert",
+=======
+    "reviewers_on_shift": 2,
+    "review_capacity_per_hour": 12,
+    "max_queue_wait_minutes": 30,
+    "stop_conditions": [
+      "Khi có 1 lỗi ghi oan cho hãng thì tắt file_carrier_fault",
+      "Khi có 1 thông báo gửi hãng lộ SĐT/tên người nhận thì tắt notify_carrier",
+      "Khi tổng hoàn tự động trong ngày chạm 1.500.000đ thì chuyển mọi khoản mới sang người duyệt",
+      "Khi có ca chờ duyệt quá 30 phút thì gọi thêm người trực"
+    ],
+    "alert_channel": "Nhóm Zalo Trực Hoàn tiền (NV-TUNG, NV-HANH, NV-OANH)",
+>>>>>>> 14d31e4b09c955dad98dee91c1fc85ed8c664339
     "decision_note": false,
     "review_sampling_pct": 0
   },
   "legal": {
-    "pii_fields_blocked_to_third_party": [],
-    "carrier_fault_requires_recorded_cause": false
+    "pii_fields_blocked_to_third_party": [
+      "recipient_contact",
+      "customer_note"
+    ],
+    "carrier_fault_requires_recorded_cause": true
   }
 }
