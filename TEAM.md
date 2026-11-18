@@ -15,7 +15,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; thêm dòng nếu 
 | --: | --------------- | ----------- | ---------------------- | :---------: |
 |   1 | Vũ Đức Minh     | 2A202603673 | Sản phẩm và kinh doanh |      x      |
 |   2 | Lê Xuân Phúc    | 2A202603655 | Vận hành và pháp lý    |             |
-|   3 | Phạm Quỳnh Anh  |             | Sản phẩm và kinh doanh |             |
+|   3 | Phạm Quỳnh Anh  | 2A202603671 | Sản phẩm và kinh doanh |             |
 |   4 | Mai Đăng Khương |             | Kỹ sư cổng             |             |
 |   5 |                 |             |                        |             |
 
@@ -24,8 +24,6 @@ Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, k
 ## Cá nhân
 
 Mỗi thành viên tự viết một mục bên dưới (chép mẫu, đổi tiêu đề thành họ tên không dấu và MSSV, ví dụ `## NguyenVanAn-20241234`).
-
-# <<<<<<< Updated upstream
 
 ## LeXuanPhuc-2A202603655
 
@@ -56,7 +54,29 @@ Mỗi thành viên tự viết một mục bên dưới (chép mẫu, đổi ti�
 - **Một điều học được:** Cổng kiểm soát và phân tích rủi ro không chỉ chặn lỗi kỹ thuật trên từng dòng code mà phải kiểm chéo ở cấp **đơn vị kinh tế theo phân khúc** và **trình tự chi phí thực tế** (loại kho `HCM-B2B` vì luôn đẩy sang người sau khi tốn tiền LLM, và đặt ngân sách đọc email `1.100đ` có biên an toàn cho các bước gọi sau).
 - **Một điều còn chưa chắc:** Khi chính sách `REFUND-v4` có hiệu lực ngày `2026-12-01` (hạ `auto_limit_vnd` từ `200.000đ` xuống `100.000đ`), tỉ lệ ca vượt hạn mức tự động ở 4 kho lẻ sẽ tăng tới đâu và `1` người trực (`6 ca/giờ`) có giữ được hàng chờ dưới `30 phút` trong giờ cao điểm thật hay không (đã đưa vào mục cần đo lại trước Gate 2).
 
-> > > > > > > Stashed changes
+## PhamQuynhAnh-2A202603671
+
+### Phần việc phụ trách
+
+- Vai: **Sản phẩm và kinh doanh**.
+- File: `config/acceptance_criteria.json` (nhóm `business_ops`), `config/operating_gates.json` (mục `business`).
+- Phiếu: A (A1, A4), B (B3, B5 nhóm 5–6, B6, B7.4, B8), C thẻ `S5` (C1, C2, C5, C7–C8, C11 nhóm 6, C12).
+
+### Đóng góp cụ thể
+
+- **Vòng 1:** Đặt ngưỡng `business_ops` (`cost_per_ticket_vnd_max = 10000`, `roi_min = 0.2`, `queue_stuck_max = 0`) và cổng `business` (`daily_refund_cap_vnd = 1.500.000` = 75% ngân sách Finance, `cost_budget_per_ticket_vnd = 1500`, `roi_min = 0.25`); đề xuất quyết định v1 **Thu hẹp**.
+- **Vòng 2 (S5):** Phân tích chi phí theo kho, chỉ ra kho sỉ `HCM-B2B` luôn vượt `auto_limit 200.000đ` nên 100% chuyển người (`10.382đ/ticket` > `10.000đ` làm tay). Đề xuất `pilot_scope` chỉ giữ 4 kho lẻ → chi phí `7.491đ` → `3.989đ/ticket`, ROI `0,33` → `1,51`, bộ `base` không suy giảm.
+- Kiểm chứng 2 chỉ số theo dõi kinh doanh (`escalated_llm_cost_avg_vnd`, `warehouse_escalation_rate_max`) và cập nhật Checklist nhóm 6 (Chi phí).
+
+### Bằng chứng
+
+- Commit (đẩy chung qua tài khoản git nhóm `2A202603673`): `26d92b3` (ký tiêu chí), `531f9c0` (chỉnh ngưỡng), `f7e1f56` (cổng `business` + phiếu B).
+- Lần chạy: `R-base-prepared-20261118-160601-f29414`, `R-S5-after-20261118-172409-208603`, `R-S5-grade-20261118-173609-c671aa` (`PASS-VISIBLE`).
+
+### Exit ticket
+
+- **Học được:** Phải bóc chi phí theo từng phân khúc/kho, không nhìn trung bình toàn hệ thống — có nhóm AI chỉ làm đội thêm tiền.
+- **Chưa chắc:** Chi phí làm tay mock cố định `10.000đ` cho cả đơn sỉ; và tỉ lệ chuyển người ở 4 kho lẻ khi `REFUND-v4` hạ hạn mức xuống `100.000đ` (từ `2026-12-01`).
 
 ## HoVaTen-MSSV
 
