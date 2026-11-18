@@ -16,8 +16,7 @@ Họ tên đầy đủ và MSSV của **mọi** thành viên; thêm dòng nếu 
 |   1 | Vũ Đức Minh     | 2A202603673 | Sản phẩm và kinh doanh |      x      |
 |   2 | Lê Xuân Phúc    | 2A202603655 | Vận hành và pháp lý    |             |
 |   3 | Phạm Quỳnh Anh  | 2A202603671 | Sản phẩm và kinh doanh |             |
-|   4 | Mai Đăng Khương |             | Kỹ sư cổng             |             |
-|   5 |                 |             |                        |             |
+|   4 | Mai Đăng Khương | 2A202603627 | Kỹ sư cổng             |             |
 
 Ghi `members` trong `submission/submission.json` theo dạng `"HoVaTen-MSSV"`, khớp bảng trên.
 
@@ -30,29 +29,30 @@ Mỗi thành viên tự viết một mục bên dưới (chép mẫu, đổi ti�
 ### Phần việc phụ trách
 
 - Vai trong bàn: **Vận hành và pháp lý**.
-- Phụ trách file: `config/operating_gates.json` (phần `operations`, `legal` và phối hợp chỉnh Vòng 2 theo thẻ `S5`), `submission/submission.json` (`team`, `members`, `decision_v1`, `decision_v2`, `three_lines`).
+- Phụ trách file: `config/operating_gates.json` (mục `operations`, `legal`, phối hợp phạm vi `pilot_scope` ở Vòng 2), `submission/submission.json` (`team`, `members`, `incident`, `decision_v1`, `decision_v2`, `three_lines`).
 - Phụ trách phiếu:
-  - `templates/form-a-criteria.md`: hoàn thiện tiêu chí A1–A5 (cùng trưởng nhóm).
-  - `templates/form-b-evaluation-gates.md`: mục B3 (bản đồ dữ liệu & ví dụ drift), B4 (HAZOP mở rộng ngoài kỹ thuật: Người duyệt, Dữ liệu bên thứ ba, Ngân sách, CSKH kiểm lại), B5 (Checklist nhóm 2, 7, 8), B7.5–B7.6 (Runbook phần 1–3 và Giờ cao điểm).
-  - `templates/form-c-incident.md` (thẻ `S5`): C0–C2, C3.5 (mở lại bản đồ dữ liệu cho `ledger_seed`, kho `HCM-B2B`, độ dài email), C4–C11 (HAZOP `S5`, đặc tả chỉ số `max_warehouse_cost_per_ticket_vnd`, Risk register, cập nhật Checklist & Runbook phần 4–5), C12 (quyết định v2 và 3 dòng bắt buộc).
+  - `templates/form-a-criteria.md`: mục A1.2 (góc nhìn chị Oanh, chị Hạnh) và A2 câu 1.4 (telemetry production).
+  - `templates/form-b-evaluation-gates.md`: mục B3 (bản đồ dữ liệu & ví dụ drift), B4 (HAZOP mở rộng ngoài kỹ thuật), B5 (Checklist nhóm 2, 8), B7.5–B7.6 (Runbook phần 1–3 và Giờ cao điểm).
+  - `templates/form-c-incident.md` (thẻ `S5`): mục C3.5 (mở lại bản đồ dữ liệu cho `ledger_seed` và kho `HCM-B2B`), C4, C11 (Runbook phần 4–5 cho tuần đầu chạy thử thật).
 
 ### Đóng góp cụ thể
 
-- Thiết lập đầy đủ các cổng vận hành và pháp lý vòng 1 (`NV-TUNG`, `NV-HANH`, `NV-OANH`, kênh báo tin Zalo, 5 điều kiện dừng, chặn trường PII `recipient_contact` & `customer_note`, bắt buộc có nguyên nhân trễ mới ghi lỗi hãng) và viết Runbook 1–3 + kịch bản giờ cao điểm khớp thông số vòng 1.
-- Rà soát xung đột merge ở vòng 2 cho `templates/form-b-evaluation-gates.md` (giữ đúng thông số vòng 1 đã chốt ở `config/operating_gates.round1.json`) và `config/operating_gates.json` (giữ cấu hình vòng 2 cho `S5`).
-- Phân tích nguyên nhân chi phí ở thẻ `S5`: loại kho sỉ `HCM-B2B` (luôn vượt `auto_limit_vnd 200.000đ` nên 100% chuyển người duyệt, tốn `10.382đ/ticket > 10.000đ` làm tay) khỏi `business.pilot_scope`, hạ `business.cost_budget_per_ticket_vnd` từ `1500` xuống `1100` (chừa biên `300đ` cho `policy_check + confirm`), và tối ưu `operations.reviewers_on_shift` từ `2` xuống `1` (`6 ca/giờ`). Kết quả đánh giá `S5` mốc `after` giảm chi phí từ `7.491đ` (`prepared`) xuống `3.897đ/ticket`, `ROI = 1,57`, `0` ca ùn, `0` vượt trần; bộ `base` giữ `100%` pass (`4.202đ/ticket`, `ROI = 1,38`).
-- Xây dựng Risk register (mục C10), cập nhật Checklist go-live và Runbook 4–5 (mục C11) cho tuần chạy thử thật, và hoàn thiện phần tổng hợp `submission/submission.json`.
+- Thiết lập đầy đủ cổng vận hành và pháp lý vòng 1 trong `config/operating_gates.json` (`NV-TUNG` giữ công tắc, `NV-HANH` đứng tên duyệt, `2` người trực/`12` ca/giờ, `max_queue_wait_minutes = 30`, kênh báo tin Zalo, điều kiện dừng, chặn PII `recipient_contact` & `customer_note`, bắt buộc nguyên nhân trễ trong tracking khi ghi lỗi hãng) khớp với Runbook 1–3 và kịch bản giờ cao điểm.
+- Phối hợp rà soát bài nộp Vòng 2 (thẻ `S5`): giữ `2` người trực (`12` ca/giờ) và trần `cost_budget_per_ticket_vnd = 1500` cùng `pre_guard` cắt text dài; cắt kho sỉ `HCM-B2B` khỏi `business.pilot_scope` (giữ 4 kho lẻ `HN, HCM, DN, CT`, độ phủ `0,6`) → chi phí giảm từ `7.491đ` (`prepared`) xuống `3.989đ/ticket`, `ROI = 1,51`, `0` ca ùn, `0` vượt trần; bộ `base` giữ `100%` pass (`5.565đ/ticket`, `ROI = 0,8`).
+- Viết Runbook 4–5 ứng phó tuần đầu chạy thử thật (tách tín hiệu theo kho/chỉ số `escalated_llm_cost_avg_vnd` & `warehouse_escalation_rate_max`, đối soát hoàn tay CSKH trước khi trả lời khách, xử lý giờ cao điểm ×3, LLM lỗi quá 15 phút, và bật kiểm mẫu khi mất lòng tin).
+- Hoàn thiện danh sách thành viên khớp `TEAM.md` và `three_lines` trong `submission/submission.json`.
 
 ### Bằng chứng
 
-- Commit: `441cce7`, `a302474` (xử lý conflict và cập nhật phiếu/cấu hình Vòng 2); chạy kiểm tra `python3 -m unittest discover -s tests` (13/13 OK) và `lab10.eval.evaluate` cho `S5` & `base` mốc `after` (sẽ bổ sung mã `runs/R-S5-grade-...` sau khi Kỹ sư cổng hoàn tất `lab10/monitors.py` và chạy `lab10.grade`).
-- Dòng trong phiếu: `templates/form-a-criteria.md` (`A1`–`A5`), `templates/form-b-evaluation-gates.md` (`B3`, `B4`, `B5`, `B7.5`–`B7.6`), `templates/form-c-incident.md` (`C1`, `C3.5`, `C8`, `C10`, `C11`, `C12`).
+- Commit: `f570223` (và tham gia xử lý Vòng 2 cùng nhóm qua nhánh/tài khoản repo bàn `441cce7`, `385e852`).
+- Mã lần chạy đối chiếu: `R-base-prepared-20261118-160601-f29414`, `R-S5-after-20261118-172409-208603`, `R-S5-grade-20261118-173609-c671aa` (`PASS-VISIBLE`: `1 integrity ✅`, `2 criteria ✅`, `3 visible ✅`, `5 regression ✅`, `6 monitor ✅`).
+- Dòng trong phiếu: `templates/form-a-criteria.md` (`A1.2`, `A2`), `templates/form-b-evaluation-gates.md` (`B3`, `B4`, `B5`, `B7.5`–`B7.6`), `templates/form-c-incident.md` (`C3.5`, `C4`, `C11`).
 - Cấu hình & bài nộp: `config/operating_gates.json`, `submission/submission.json`.
 
 ### Exit ticket
 
-- **Một điều học được:** Cổng kiểm soát và phân tích rủi ro không chỉ chặn lỗi kỹ thuật trên từng dòng code mà phải kiểm chéo ở cấp **đơn vị kinh tế theo phân khúc** và **trình tự chi phí thực tế** (loại kho `HCM-B2B` vì luôn đẩy sang người sau khi tốn tiền LLM, và đặt ngân sách đọc email `1.100đ` có biên an toàn cho các bước gọi sau).
-- **Một điều còn chưa chắc:** Khi chính sách `REFUND-v4` có hiệu lực ngày `2026-12-01` (hạ `auto_limit_vnd` từ `200.000đ` xuống `100.000đ`), tỉ lệ ca vượt hạn mức tự động ở 4 kho lẻ sẽ tăng tới đâu và `1` người trực (`6 ca/giờ`) có giữ được hàng chờ dưới `30 phút` trong giờ cao điểm thật hay không (đã đưa vào mục cần đo lại trước Gate 2).
+- **Một điều học được:** Không thể chỉ kiểm tra an toàn kỹ thuật hoặc chi phí trung bình toàn hệ thống; phải bóc tách cả cấu trúc vận hành theo từng kho (kho sỉ `HCM-B2B` tốn `10.382đ/ticket` dù `pass_rate = 1,0`) và giữ đồng bộ chặt giữa quy trình hoàn tay của CSKH với sổ cái `ledger`.
+- **Một điều còn chưa chắc:** Ngoài thực tế chi phí làm tay đối với đơn sỉ kho `HCM-B2B` có đúng `10.000đ` như mock hay cao hơn, và tốc độ đồng bộ giữa công cụ hoàn tay của CSKH với `ledger` có gây độ trễ trong ca hay không (đã đưa vào mục cần đo lại ở Runbook 4 và `three_lines.measure_in_pilot`).
 
 ## PhamQuynhAnh-2A202603671
 
