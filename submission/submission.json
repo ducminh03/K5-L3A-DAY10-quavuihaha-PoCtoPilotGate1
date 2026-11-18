@@ -1,12 +1,14 @@
 {
   "team": "K5-L3A-DAY10-quavuihaha-PoCtoPilotGate1",
-  "members": [],
-  "incident": "",
-  "decision_v1": "",
-  "decision_v2": "",
+  "members": [
+    "VuDucMinh-2A202603673"
+  ],
+  "incident": "S5",
+  "decision_v1": "Thu hẹp",
+  "decision_v2": "Thu hẹp",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Ticket của khách ngắn, kho sỉ là nhóm duy nhất không có lời, và CSKH không hoàn tay song song với trợ lý; trong thực tế khách có thể dán kèm tài liệu dài chứa yêu cầu thật, và đơn nhỏ ở kho khác cũng có thể vượt hạn mức khi REFUND-v4 hạ hạn mức xuống 100.000đ.",
+    "reduce_or_prevent": "Với tiền hoàn sai thì NGĂN, vì write_gate tính từ tracking DB và sổ cái trước khi ghi; với chi phí thì chỉ GIẢM (cắt text) hoặc NGĂN bằng cách bỏ cả kho khỏi phạm vi, đổi lại độ phủ còn 0,6.",
+    "measure_in_pilot": "Chi phí công người thật theo từng kho và từng loại đơn (mock đặt 10.000đ), tỉ lệ ticket dán kèm dài thật, và số khoản CSKH hoàn tay mỗi ngày."
   }
 }

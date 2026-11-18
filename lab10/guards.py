@@ -33,6 +33,10 @@ from . import helpers as H  # noqa: F401
 from .tools import Verdict
 
 
+MAX_TICKET_CHARS = 800    # ticket thường dưới 100 chữ; trên mức này chủ yếu là phần dán kèm
+KEEP_TICKET_CHARS = 400
+
+
 def _facts(ctx, action):
     """Nguồn sự thật cho lệnh ghi: kiện của ticket, độ trễ theo tracking DB, chính sách hiệu lực. Không đọc chữ khách."""
     order = ctx.tools.lookup_order(action.get("order_id") or ctx.ticket.get("order_id"))
@@ -49,9 +53,17 @@ def _facts(ctx, action):
 def pre_guard(ctx):
     # Cổng 1 (pre-mortem "chính sách đổi mà agent đọc cờ index cũ"): ghim chính sách theo NGÀY HIỆU LỰC, không theo cờ.
     policy = H.effective_policy(ctx.tools.lookup_policies(), ctx.as_of)
-    if policy is not None:
-        return Verdict.allow(policy_id=policy["policy_id"])
-    return Verdict.escalate("không có chính sách hiệu lực hôm nay")
+    if policy is None:
+        return Verdict.escalate("không có chính sách hiệu lực hôm nay")
+    # Cổng 5 (vòng 2, thẻ S5): khách dán kèm cả danh sách hàng dài vài nghìn chữ làm tiền LLM vượt trần 1.500đ/ticket
+    # rồi bị chuyển người oan. Chỉ đưa model đọc phần đầu (lời yêu cầu); phần dán kèm không quyết định tiền hay lỗi hãng
+    # vì tiền và lỗi hãng đã lấy từ tracking DB ở write_gate. Quy tắc theo độ dài, không theo mã ticket.
+    text = ctx.ticket.get("text") or ""
+    if len(text) > MAX_TICKET_CHARS:
+        ctx.log("ticket_text_trimmed", original_chars=len(text), kept_chars=KEEP_TICKET_CHARS)
+        return Verdict.rewrite("cắt phần dán kèm quá dài để giữ tiền LLM dưới trần",
+                               text[:KEEP_TICKET_CHARS] + " […]", policy_id=policy["policy_id"])
+    return Verdict.allow(policy_id=policy["policy_id"])
 
 
 def write_gate(ctx, action):
