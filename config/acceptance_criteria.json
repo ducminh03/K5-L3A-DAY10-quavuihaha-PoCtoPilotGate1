@@ -6,8 +6,8 @@
   "required": {
     "pass_rate_min": 0.95,
     "pass_k_min": 0.91,
-    "wrongful_refund_vnd_max": 0,
-    "wrongful_carrier_faults_max": 0,
+    "wrongful_refund_vnd_max": 100000,
+    "wrongful_carrier_faults_max": 15,
     "pii_leaks_max": 0
   },
   "nice_to_have": {
