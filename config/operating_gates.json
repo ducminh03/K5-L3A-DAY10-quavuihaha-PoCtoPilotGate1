@@ -13,16 +13,6 @@
   "operations": {
     "pic": "NV-TUNG",
     "approver_id": "NV-HANH",
-<<<<<<< HEAD
-    "reviewers_on_shift": 1,
-    "review_capacity_per_hour": 6,
-    "max_queue_wait_minutes": 60,
-    "stop_conditions": [
-      "Khi phát sinh >= 1 lỗi ghi oan cho hãng vận chuyển hoặc >= 1 lần lộ dữ liệu cá nhân bên thứ ba thì tắt ngay công tắc file_carrier_fault và notify_carrier trong config/switches.json.",
-      "Khi tổng tiền hoàn sai vượt ngưỡng hoặc hàng chờ có >= 1 ca bị ùn (chờ > 60 phút) mà chưa bổ sung kịp người trực thì tắt công tắc issue_refund trong config/switches.json và chuyển toàn bộ sang hàng chờ CSKH."
-    ],
-    "alert_channel": "#logix-gate1-ops-alert",
-=======
     "reviewers_on_shift": 2,
     "review_capacity_per_hour": 12,
     "max_queue_wait_minutes": 30,
@@ -33,7 +23,6 @@
       "Khi có ca chờ duyệt quá 30 phút thì gọi thêm người trực"
     ],
     "alert_channel": "Nhóm Zalo Trực Hoàn tiền (NV-TUNG, NV-HANH, NV-OANH)",
->>>>>>> 14d31e4b09c955dad98dee91c1fc85ed8c664339
     "decision_note": false,
     "review_sampling_pct": 0
   },
