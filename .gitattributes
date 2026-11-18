@@ -1,0 +1,5 @@
+# Keep checkpoint and submission hash inputs byte-stable across platforms.
+# The existing locks/manifests contain CRLF bytes for config and reports.
+config/*.json text eol=crlf
+config/*.lock text eol=crlf
+lab10/guards_round1.py text eol=lf
