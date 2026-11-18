@@ -7,18 +7,24 @@
     "roi_min": null
   },
   "operations": {
-    "pic": "",
-    "approver_id": "",
+    "pic": "NV-TUNG",
+    "approver_id": "NV-HANH",
     "reviewers_on_shift": 1,
-    "review_capacity_per_hour": null,
-    "max_queue_wait_minutes": null,
-    "stop_conditions": [],
-    "alert_channel": "",
+    "review_capacity_per_hour": 6,
+    "max_queue_wait_minutes": 60,
+    "stop_conditions": [
+      "Khi phát sinh >= 1 lỗi ghi oan cho hãng vận chuyển hoặc >= 1 lần lộ dữ liệu cá nhân bên thứ ba thì tắt ngay công tắc file_carrier_fault và notify_carrier trong config/switches.json.",
+      "Khi tổng tiền hoàn sai vượt ngưỡng hoặc hàng chờ có >= 1 ca bị ùn (chờ > 60 phút) mà chưa bổ sung kịp người trực thì tắt công tắc issue_refund trong config/switches.json và chuyển toàn bộ sang hàng chờ CSKH."
+    ],
+    "alert_channel": "#logix-gate1-ops-alert",
     "decision_note": false,
     "review_sampling_pct": 0
   },
   "legal": {
-    "pii_fields_blocked_to_third_party": [],
-    "carrier_fault_requires_recorded_cause": false
+    "pii_fields_blocked_to_third_party": [
+      "recipient_contact",
+      "customer_note"
+    ],
+    "carrier_fault_requires_recorded_cause": true
   }
 }
