@@ -1,11 +1,31 @@
 {
- "run_id": "R-S5-grade-20261118-173609-c671aa",
+ "run_id": "R-S5-grade-20261118-173911-bfb9ee",
  "incident": "S5",
  "grader_version": "lab10-1.0",
- "code_hash": "c671aab865817ad1bc208eea985eb349947d2bf44bad6b96c87dba5eb72491fc",
+ "code_hash": "bfb9eee45a7b409f0b6255ad332532388a4c179b52c12fbaba7cd0c3a06dbbca",
  "integrity": {
-  "ok": true,
-  "changed": [],
+  "ok": false,
+  "changed": [
+   "data/tickets.jsonl",
+   "data/world.json",
+   "lab10/__init__.py",
+   "lab10/_gradectx.py",
+   "lab10/_noop_guards.py",
+   "lab10/agent.py",
+   "lab10/check_submission.py",
+   "lab10/checkpoint.py",
+   "lab10/criteria.py",
+   "lab10/eval.py",
+   "lab10/gate.py",
+   "lab10/grade.py",
+   "lab10/helpers.py",
+   "lab10/mock_llm.py",
+   "lab10/ops.py",
+   "lab10/tools.py",
+   "lab10/trace.py",
+   "lab10/world.py",
+   "tests/test_public.py"
+  ],
   "manifest": "MANIFEST.json"
  },
  "criteria": {
@@ -24,10 +44,10 @@
   "status": "khớp"
  },
  "checkpoint": {
-  "ok": true,
+  "ok": false,
   "taken": true,
   "hash": "1b8aeb58688b1b14afe7058e9aa82c11b7a72d17776204b16cc851b6b46b94c6",
-  "problem": null,
+  "problem": "bản chốt vòng 1 ĐÃ BỊ SỬA sau khi chốt",
   "taken_at": "2026-11-18T16:06:00"
  },
  "before": {
@@ -1335,9 +1355,9 @@
   }
  },
  "run_ids": {
-  "before": "R-S5-before-20261118-173611-c671aa",
-  "prepared": "R-S5-prepared-20261118-173611-c671aa",
-  "after": "R-S5-after-20261118-173611-c671aa"
+  "before": "R-S5-before-20261118-173912-bfb9ee",
+  "prepared": "R-S5-prepared-20261118-173912-bfb9ee",
+  "after": "R-S5-after-20261118-173912-bfb9ee"
  },
  "visible": {
   "before_red": true,
@@ -1404,15 +1424,15 @@
   "rule": "Chỉ được chọn 'Tiếp tục' khi không vượt trần nào và mọi ngưỡng đã ký đều đạt. Thu hẹp, Cải tiến thêm, Dừng có lý do và có số thì vẫn là quyết định đạt."
  },
  "checks": {
-  "integrity": true,
+  "integrity": false,
   "criteria": true,
   "visible": true,
   "hidden": null,
   "regression": true,
   "monitor": true
  },
- "hard_gates_ok": true,
+ "hard_gates_ok": false,
  "score": null,
- "verdict": "PASS-VISIBLE (chưa chạy test ẩn)",
- "seconds": 1.98
+ "verdict": "FAIL",
+ "seconds": 1.602
 }

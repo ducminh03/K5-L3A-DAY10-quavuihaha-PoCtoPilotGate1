@@ -1,17 +1,17 @@
-# Tự kiểm tra sự cố S5 · PASS-VISIBLE (chưa chạy test ẩn)
+# Tự kiểm tra sự cố S5 · FAIL
 
 *Đây là kết quả TỰ KIỂM TRA của bàn, không phải điểm. Bài được một team chấm tự động chấm lại sau buổi học.*
 
-- Mã lần chạy: `R-S5-grade-20261118-173609-c671aa` · bàn: `K5-L3A-DAY10-quavuihaha-PoCtoPilotGate1` · grader `lab10-1.0` · 1.98s
-- Ba mốc: base `R-S5-before-20261118-173611-c671aa` · prepared `R-S5-prepared-20261118-173611-c671aa` · after `R-S5-after-20261118-173611-c671aa` (report + trace trong runs/)
-- Mốc prepared (cổng vòng 1): đã chốt `1b8aeb58`, còn nguyên
-- Hash code đội (guards + monitors + switches + cổng vận hành): `c671aab86581`
+- Mã lần chạy: `R-S5-grade-20261118-173911-bfb9ee` · bàn: `K5-L3A-DAY10-quavuihaha-PoCtoPilotGate1` · grader `lab10-1.0` · 1.602s
+- Ba mốc: base `R-S5-before-20261118-173912-bfb9ee` · prepared `R-S5-prepared-20261118-173912-bfb9ee` · after `R-S5-after-20261118-173912-bfb9ee` (report + trace trong runs/)
+- Mốc prepared (cổng vòng 1): CHƯA DÙNG ĐƯỢC: bản chốt vòng 1 ĐÃ BỊ SỬA sau khi chốt
+- Hash code đội (guards + monitors + switches + cổng vận hành): `bfb9eee45a7b`
 - Hash Bản tiêu chí chấp nhận: `1fe9371ca07b` · đã ký: `1fe9371ca07b` · KHÔNG ĐỔI
 - Thẻ đang kiểm: `S5` · dòng "Thẻ đã bốc" bàn ghi trong phiếu: S5 · khớp
 
 | Kiểm | Kết quả | Chi tiết |
 |---|---|---|
-| 1 integrity | ✅ | file khoá bị đổi: không |
+| 1 integrity | ❌ | file khoá bị đổi: ['data/tickets.jsonl', 'data/world.json', 'lab10/__init__.py', 'lab10/_gradectx.py', 'lab10/_noop_guards.py', 'lab10/agent.py', 'lab10/check_submission.py', 'lab10/checkpoint.py', 'lab10/criteria.py', 'lab10/eval.py', 'lab10/gate.py', 'lab10/grade.py', 'lab10/helpers.py', 'lab10/mock_llm.py', 'lab10/ops.py', 'lab10/tools.py', 'lab10/trace.py', 'lab10/world.py', 'tests/test_public.py'] |
 | 2 criteria | ✅ | đã ký, còn nguyên |
 | 3 visible | ✅ | base có vấn đề: True; after sạch: True; ticket còn hỏng: không; trần còn vượt: không |
 | 4 hidden | — | máy này không có bài kiểm tra ẩn (team chấm sẽ chạy sau buổi học) |
