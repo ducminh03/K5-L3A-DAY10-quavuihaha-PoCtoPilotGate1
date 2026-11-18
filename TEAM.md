@@ -5,7 +5,7 @@
 - Tên nhóm (`TenNhom`, không dấu, không khoảng trắng): quavuihaha
 - Lớp: `L3A`
 - Repo của bàn: `K5-L3A-DAY10-quavuihaha-PoCtoPilotGate1`
-- Thẻ sự cố đã bốc (S1–S8): S5 S5
+- Thẻ sự cố đã bốc (S1–S8): S5
 
 ## Thành viên
 
