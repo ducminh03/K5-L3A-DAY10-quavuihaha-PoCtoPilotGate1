@@ -1,12 +1,14 @@
 {
   "team": "K5-L3A-DAY10-quavuihaha-PoCtoPilotGate1",
-  "members": [],
-  "incident": "",
-  "decision_v1": "",
-  "decision_v2": "",
+  "members": [
+    "VuDucMinh-2A202603673"
+  ],
+  "incident": "S5",
+  "decision_v1": "Thu hẹp",
+  "decision_v2": "Thu hẹp",
   "three_lines": {
-    "environment_assumption": "",
-    "reduce_or_prevent": "",
-    "measure_in_pilot": ""
+    "environment_assumption": "Thiết kế hiện tại giả định các yêu cầu hoàn tiền của khách sỉ và khách lẻ được gửi ngắn gọn đúng trọng tâm và mọi khoản hoàn tiền của CSKH đều được ghi nhận đầy đủ vào cùng sổ cái trước khi trợ lý xử lý; ngoài thực tế khách sỉ kho HCM-B2B thường dán bảng kê 50–75 dòng hàng hoá đẩy chi phí LLM lên 2.412đ/ticket (> trần 1.500đ) và CSKH có thể hoàn tay trong ngày trước khi cờ refund_status kịp cập nhật lúc nửa đêm.",
+    "reduce_or_prevent": "Hệ thống cổng kết hợp code và config NGĂN hẳn được hoàn trùng/hoàn lố từ sổ cái (guards.py chặn theo ledger_rows), NGĂN hẳn lỗ tự động hoá ở kho sỉ HCM-B2B (business.pilot_scope cắt kho sỉ, giữ 4 kho lẻ độ phủ 0,6), và NGĂN hẳn chi phí LLM vượt trần 1.500đ (business.cost_budget_per_ticket_vnd = 1.100đ); tuy nhiên cổng chỉ GIẢM khả năng ngập hàng chờ với 1 người trực vì nếu lưu lượng tăng gấp ba ngoài dự kiến hoặc CSKH hoàn tay ở công cụ ngoài không ghi chung vào ledger thì vẫn cần bổ sung người trực hoặc tắt bớt công tắc.",
+    "measure_in_pilot": "Vì data hiện tại là mock, trong pilot thật tại 4 kho lẻ (HN, HCM, DN, CT) trước Gate 2 cần đo lại: (1) giá trị đơn hàng, độ dài email thực tế và tỉ lệ đơn kho lẻ vượt hạn mức 100.000đ khi chuyển sang chính sách REFUND-v4 từ 2026-12-01; (2) độ trễ cập nhật giữa sổ hoàn tay của CSKH với hệ thống trợ lý; (3) thời gian duyệt ca thực tế của người trực (có giữ được <= 10 phút/ca ở giờ cao điểm với 1 người trực hay không) và chi phí token LLM thực tế theo từng kho."
   }
 }
